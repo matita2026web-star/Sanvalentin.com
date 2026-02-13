@@ -120,7 +120,7 @@ const PhotoSection: React.FC<SectionProps> = ({ id }) => {
             >
               <Heart className="w-5 h-5 text-[#FF6F91] mb-3 fill-current" />
               <p className="font-playfair text-[#2E2E2E] text-sm italic leading-relaxed">
-                "Este fue el día que entendí que mi lugar favorito es a tu lado."
+                "Momentos simples que se vuelven eternos."
               </p>
             </motion.div>
           </div>
