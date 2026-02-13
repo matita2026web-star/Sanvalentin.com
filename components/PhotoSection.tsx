@@ -135,8 +135,8 @@ const PhotoSection: React.FC<SectionProps> = ({ id }) => {
             className="mt-32 text-center"
           >
             <h4 className="font-playfair text-3xl md:text-5xl text-[#2E2E2E] leading-[1.6] italic font-medium max-w-4xl mx-auto px-6 drop-shadow-sm">
-              "Ese día no solo te pedí que fueras mi novia… <br className="hidden md:block" />
-              Te elegí para caminar conmigo por siempre."
+              "aca vos y yo en un dia de las vacaciones, pero con la persona correcta. <br className="hidden md:block" />
+               simplemente un momento hermoso y una foto historica con mi amor ."
             </h4>
           </motion.div>
         </motion.div>
