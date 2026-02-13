@@ -1,0 +1,7 @@
+{
+  "name": "El Atardecer Que Nos Cambió",
+  "description": "Una landing page romántica y elegante diseñada para celebrar un momento especial, con animaciones cinematográficas, un contador de tiempo y un mensaje íntimo.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
