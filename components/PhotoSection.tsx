@@ -18,7 +18,8 @@ const Petals: React.FC = () => {
         delay: Math.random() * 5,
         drift: Math.random() * 100 - 50,
         rotate: Math.random() * 360,
-        depth: Math.random()
+        depth: Math.random(),
+        hue: 330 + Math.random() * 40
       })),
     []
   );
@@ -26,10 +27,8 @@ const Petals: React.FC = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
       {petals.map((petal) => (
-        <motion.img
+        <motion.div
           key={petal.id}
-          src="https://i.ibb.co/7QpKsCX/petal.png" // PNG pétalo (puedes cambiarlo si quieres otro)
-          alt="petal"
           initial={{
             y: -100,
             x: `${petal.left}vw`,
@@ -50,8 +49,12 @@ const Petals: React.FC = () => {
           }}
           style={{
             width: petal.size,
+            height: petal.size * 1.15,
             filter: petal.depth > 0.5 ? "blur(1px)" : "none",
-            zIndex: petal.depth > 0.5 ? 0 : 20
+            zIndex: petal.depth > 0.5 ? 0 : 20,
+            background: `linear-gradient(145deg, hsla(${petal.hue}, 90%, 84%, 0.95), hsla(${petal.hue - 12}, 95%, 70%, 0.75))`,
+            boxShadow: 'inset -5px -6px 12px rgba(255,255,255,0.45), 0 12px 24px rgba(220, 39, 117, 0.22)',
+            borderRadius: '58% 42% 68% 32% / 54% 33% 67% 46%'
           }}
           className="absolute top-0"
         />
@@ -68,7 +71,7 @@ const PhotoSection: React.FC<SectionProps> = ({ id }) => {
   return (
     <section
       id={id}
-      className="relative min-h-screen bg-[#FFF6E5] flex flex-col items-center justify-center py-40 px-6 overflow-hidden scroll-mt-20"
+      className="relative min-h-screen bg-[radial-gradient(circle_at_top,#fff9ed_0%,#fff4de_35%,#fff0d2_100%)] flex flex-col items-center justify-center py-40 px-6 overflow-hidden scroll-mt-20"
     >
       {/* 🌸 PÉTALOS */}
       <Petals />
@@ -84,13 +87,13 @@ const PhotoSection: React.FC<SectionProps> = ({ id }) => {
           <div className="relative group mx-auto max-w-2xl">
 
             {/* Glow suave */}
-            <div className="absolute -inset-10 bg-purple-500/5 rounded-full blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
+            <div className="absolute -inset-10 bg-purple-500/10 rounded-full blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
 
             <motion.div
               whileHover={{ scale: 1.02, rotate: 0 }}
               initial={{ rotate: -1 }}
               transition={{ duration: 0.8 }}
-              className="relative overflow-hidden rounded-[2rem] shadow-[0_60px_120px_-20px_rgba(156,39,176,0.15)] bg-white border-[8px] md:border-[16px] border-white transition-all duration-700"
+              className="relative overflow-hidden rounded-[2rem] shadow-[0_60px_120px_-20px_rgba(156,39,176,0.2)] bg-white border-[8px] md:border-[16px] border-white transition-all duration-700"
             >
               {/* 📸 TU FOTO */}
               <img
