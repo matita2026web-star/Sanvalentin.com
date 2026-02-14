@@ -29,10 +29,10 @@ const SunsetHero: React.FC<SectionProps> = ({ id }) => {
         initial={{ scale: 1.2, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 3, ease: "easeOut" }}
-        className="absolute inset-0 bg-gradient-to-br from-[#9C27B0] via-[#FF6F91] to-[#FFD166] z-0"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,#ff9fb9_0%,#ff709b_35%,#c85ad6_70%,#7f4ad8_100%)] z-0"
       />
       
-      <div className="absolute inset-0 bg-black/10 backdrop-blur-[1px] z-[1]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(20,8,26,0.2),rgba(20,8,26,0.35))] backdrop-blur-[1px] z-[1]" />
 
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -77,9 +77,9 @@ const SunsetHero: React.FC<SectionProps> = ({ id }) => {
             onClick={scrollToRecuerdo}
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
-            className="group relative inline-flex items-center justify-center px-16 py-7 overflow-hidden font-medium text-white transition duration-500 ease-out bg-white/10 backdrop-blur-md border border-white/20 rounded-full shadow-[0_25px_60px_-15px_rgba(0,0,0,0.4)] z-20 cursor-pointer"
+            className="group relative inline-flex items-center justify-center px-16 py-7 overflow-hidden font-medium text-white transition duration-500 ease-out bg-white/15 backdrop-blur-md border border-white/30 rounded-full shadow-[0_25px_60px_-15px_rgba(0,0,0,0.45)] z-20 cursor-pointer"
           >
-            <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-500 -translate-x-full bg-[#FF6F91] group-hover:translate-x-0 ease">
+            <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-500 -translate-x-full bg-gradient-to-r from-[#ff6f91] to-[#ff8ab3] group-hover:translate-x-0 ease">
               <svg className="w-7 h-7 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
               </svg>
