@@ -6,12 +6,18 @@ import PhotoSection from './components/PhotoSection';
 import CountdownSection from './components/CountdownSection';
 import LetterSection from './components/LetterSection';
 import HeartBackground from './components/HeartBackground';
-import { Music, Music2, Heart } from 'lucide-react';
+import { Music2, Heart } from 'lucide-react';
+
+
+const LOCAL_MUSIC_SRC = '/music/nrique Iglesias, Juan Luis Guerra - Cuando Me Enamoro (Official Music Video).webm';
+const DEFAULT_MUSIC_SRC = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3';
+const MUSIC_SRC = import.meta.env.VITE_MUSIC_URL || LOCAL_MUSIC_SRC;
 
 const App: React.FC = () => {
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [musicLabel, setMusicLabel] = useState('Tu canción especial');
 
   useEffect(() => {
     setIsLoaded(true);
@@ -41,16 +47,27 @@ const App: React.FC = () => {
           transition={{ duration: 1.5 }}
           className="relative min-h-screen selection:bg-rose-200 selection:text-rose-900"
         >
-          {/* 
+          {/*
               ---------------------------------------------------------
-              🎵 AQUÍ PONES TU MÚSICA:
-              Reemplaza el link en 'src' con tu archivo .mp3 directo.
+              🎵 MÚSICA PERSONALIZADA:
+              1) Copia tu archivo en /public/music/nrique Iglesias, Juan Luis Guerra - Cuando Me Enamoro (Official Music Video).webm
+              2) (Opcional) define VITE_MUSIC_URL en .env.local
+                 Ej: VITE_MUSIC_URL=https://misitio.com/tu-cancion.webm
               ---------------------------------------------------------
           */}
           <audio
             ref={audioRef}
             loop
-            src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" 
+            preload="metadata"
+            src={MUSIC_SRC}
+            onLoadedMetadata={() => setMusicLabel('Nuestra canción ❤️')}
+            onError={() => {
+              setMusicLabel('Canción romántica');
+              if (audioRef.current && audioRef.current.src !== DEFAULT_MUSIC_SRC) {
+                audioRef.current.src = DEFAULT_MUSIC_SRC;
+                audioRef.current.load();
+              }
+            }}
           />
 
           <motion.button
@@ -71,7 +88,7 @@ const App: React.FC = () => {
               {isMusicPlaying ? <Heart className="w-6 h-6 fill-current animate-pulse text-[#FF6F91]" /> : <Music2 className="w-6 h-6 text-gray-400" />}
             </div>
             <span className="text-[11px] font-bold uppercase tracking-[0.4em] max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-700 whitespace-nowrap px-0 group-hover:px-4">
-              {isMusicPlaying ? 'Cuando Me Enamoro...' : 'Activar Música'}
+              {isMusicPlaying ? musicLabel : 'Activar Música'}
             </span>
           </motion.button>
 
